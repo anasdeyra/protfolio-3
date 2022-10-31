@@ -43,16 +43,16 @@ function MyApp({ Component, pageProps }: AppProps) {
         {showScrollUp && (
           <motion.button
             whileTap={{ scale: 0.95 }}
-            whileHover={{ backgroundColor: "#262626" }}
+            whileHover={{ color: "#111", backgroundColor: "white" }}
             onClick={() => {
               document.documentElement.scroll({ top: 0, behavior: "smooth" });
             }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className=" m-4 fixed right-0 bottom-0 p-4 bg-[#111] rounded-full "
+            initial={{ bottom: -50 }}
+            animate={{ bottom: 0 }}
+            exit={{ bottom: -80 }}
+            className="m-4 fixed right-0 p-4 bg-[#111]  text-white rounded-full shadow-2xl shadow-black"
           >
-            <FiArrowUp size={24} color="white" />
+            <FiArrowUp size={24} />
           </motion.button>
         )}
       </AnimatePresence>
