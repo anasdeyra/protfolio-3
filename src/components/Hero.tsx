@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 export default function Hero() {
   return (
     <AnimatePresence>
-      <div className="mb-52 max-md:mb-40">
+      <div>
         <motion.h1
           transition={{ duration: 0.8, delay: 0.8 }}
           initial={{ translateY: -60, opacity: 0 }}

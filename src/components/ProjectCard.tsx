@@ -4,20 +4,10 @@ import { BsGithub, BsLink45Deg as BsLink } from "react-icons/bs";
 
 export default function ProjectCard() {
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay: 0.3 }}
-      variants={{
-        visible: { opacity: 1 },
-        hidden: { opacity: 0 },
-      }}
-      className="flex flex-col items-center bg-white rounded-lg shadow-md md:flex-row md:max-w-xl"
-    >
+    <motion.div className="flex flex-col items-center bg-white rounded-lg shadow-md md:flex-row md:max-w-xl">
       <img
-        className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-60 md:rounded-none md:rounded-l-lg"
-        src="/bg.png"
+        className="object-cover object-top w-full h-52 rounded-t-lg md:h-auto md:w-60 md:rounded-none md:rounded-l-lg"
+        src="/projects/1.png"
         alt=""
       />
       <div className="flex flex-col justify-between p-4 leading-normal">
