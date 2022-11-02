@@ -1,46 +1,39 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { BsGithub, BsLink45Deg as BsLink } from "react-icons/bs";
+import { BsGithub } from "react-icons/bs";
+import { HiExternalLink } from "react-icons/hi";
 
 export default function ProjectCard() {
   return (
-    <motion.div className="flex flex-col items-center bg-white rounded-lg shadow-md md:flex-row md:max-w-xl">
-      <img
-        className="object-cover object-top w-full h-52 rounded-t-lg md:h-auto md:w-60 md:rounded-none md:rounded-l-lg"
-        src="/projects/1.png"
-        alt=""
-      />
-      <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-          Noteworthy technology acquisitions 2021
-        </h5>
-        <p className="mb-3 font-normal text-gray-700 ">
+    <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md  ">
+      <a href="#">
+        <img className="rounded-t-lg" src="/projects/1.png" alt="" />
+      </a>
+      <div className="p-5">
+        <a href="#">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+            Noteworthy technology acquisitions 2021
+          </h5>
+        </a>
+        <p className="mb-6 font-medium text-gray-700 ">
           Here are the biggest enterprise technology acquisitions of 2021 so
           far, in reverse chronological order.
         </p>
-        <div className="flex flex-row gap-6  mt-4">
+        <div className="flex justify-between">
           <Link passHref href={"/"}>
-            <motion.a
-              initial={false}
-              whileTap={{ scale: 0.95 }}
-              whileHover={{ backgroundColor: "#262626" }}
-              className="text-white bg-neutral-900 font-bold rounded-full py-2 px-4 w-full flex justify-center"
-            >
-              <BsGithub />
+            <motion.a className="inline-flex items-center py-2 px-3 text-sm font-bold text-center text-neutral-700 bg-neutral-200 hover:bg-neutral-100 rounded-full  ">
+              Try Demo
+              <HiExternalLink className="ml-2" />
             </motion.a>
           </Link>
           <Link passHref href={"/"}>
-            <motion.a
-              initial={false}
-              whileTap={{ scale: 0.95 }}
-              whileHover={{ backgroundColor: "#262626" }}
-              className="text-white bg-neutral-900 font-bold rounded-full py-2 px-4 w-full flex justify-center"
-            >
-              <BsLink />
+            <motion.a className="inline-flex items-center py-2 px-3 text-sm font-bold text-center text-neutral-700 bg-neutral-200 hover:bg-neutral-100 rounded-full  ">
+              Source
+              <BsGithub className="ml-2" />
             </motion.a>
           </Link>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

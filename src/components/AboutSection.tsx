@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
+import InfoSegments from "./InfoSegments";
 
 export default function AboutSection() {
   return (
-    <div>
+    <div id="about">
       <motion.h2
         initial="hidden"
         whileInView="visible"
@@ -17,7 +17,7 @@ export default function AboutSection() {
       >
         About
       </motion.h2>
-      <motion.div className="mt-12 gap-6 flex flex-col md:flex-row items-center">
+      <motion.div className="mt-16 md:mt-24 gap-6 flex flex-col lg:flex-row items-center lg:items-start">
         <motion.img
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,17 +27,7 @@ export default function AboutSection() {
           src="/photo2.png"
         />
 
-        <motion.h3
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: "easeIn", delay: 0.3 }}
-          className="md:text-2xl text-lg font-semibold text-left"
-        >
-          Anas Ben Deyra, 20 years old computer science student born and based
-          in Tunisia, Have been developing web apps with react for 2 years. And
-          I also love cycling and making bad music.
-        </motion.h3>
+        <InfoSegments />
       </motion.div>
     </div>
   );

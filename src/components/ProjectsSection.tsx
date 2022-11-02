@@ -29,19 +29,19 @@ export default function ProjectsSection() {
         Featured Projects
       </motion.h2>
       <motion.div
-        className="flex flex-col gap-16 mt-16"
+        className="flex max-xl:flex-col  max-xl:items-center gap-16 mt-16 md:mt-24"
         variants={container}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
       >
-        <motion.div className="self-start" variants={item}>
+        <motion.div className="xl:mt-12" variants={item}>
           <ProjectCard />
         </motion.div>
-        <motion.div className="self-end" variants={item}>
+        <motion.div variants={item}>
           <ProjectCard />
         </motion.div>
-        <motion.div className="self-start" variants={item}>
+        <motion.div className="xl:mt-12" variants={item}>
           <ProjectCard />
         </motion.div>
       </motion.div>
@@ -53,7 +53,7 @@ export default function ProjectsSection() {
         whileHover={{ backgroundColor: "#262626" }}
         className="text-white mt-24 shadow-xl  bg-neutral-900 font-bold rounded-full py-2 px-6 "
       >
-        See ll
+        See all
       </motion.button>
     </div>
   );

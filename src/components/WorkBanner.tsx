@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function WorkBanner() {
   return (
@@ -7,23 +8,26 @@ export default function WorkBanner() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 1 }}
-      className="bg-[#111] relative w-full p-8 text-left rounded-3xl flex flex-col lg:flex-row gap-4 justify-between items-center"
+      className="bg-[#111] shadow-xl relative w-full p-8 text-left rounded-3xl flex flex-col lg:flex-row gap-4 justify-between items-center"
     >
       <div>
         <h2 className="text-3xl font-bold text-white">
           Need work or a project done ?
         </h2>
-        <p className="text-lg text-neutral-400 font-bold mt-2">
+        <p className="text-lg text-neutral-300 font-bold mt-2">
           If you’re interested in working together, don’t hesitate!
         </p>
       </div>
-      <motion.button
+
+      <motion.a
+        href={"/#contact"}
         whileTap={{ scale: 0.95 }}
         whileHover={{ scale: 1.1 }}
-        className="text-neutral-900 bg-white font-bold rounded-lg py-2 px-6 "
+        className="text-neutral-900 bg-white font-bold rounded-lg py-2 px-6 cursor-pointer"
       >
         Contact
-      </motion.button>
+      </motion.a>
+
       <motion.img
         height={121}
         width={192}
