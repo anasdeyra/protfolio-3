@@ -41,7 +41,7 @@ function SocialLink({ link = "#", Icon }: { link: string; Icon: IconType }) {
   );
 }
 
-const SOCIALS = [
+export const SOCIALS = [
   {
     Icon: BsLinkedin,
     link: "https://www.linkedin.com/in/anas-deyra-7015b9240/",

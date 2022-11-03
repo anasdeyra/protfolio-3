@@ -20,7 +20,7 @@ export default function Hero() {
         >
           A Web developer specializing in building (and occasionally designing)
           exceptional digital experiences mostly using Next js. Currently, I am
-          a part time freelancer
+          a part time freelancer.
         </motion.h2>
         <motion.div
           transition={{ duration: 0.8, delay: 1.3 }}
