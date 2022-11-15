@@ -28,20 +28,22 @@ export default function Hero() {
           animate={{ translateY: 0, opacity: 1 }}
           className="flex flex-row mt-16 justify-center gap-10"
         >
-          <motion.button
+          <motion.a
+            href="/projects"
             whileTap={{ scale: 0.95 }}
             whileHover={{ backgroundColor: "#262626" }}
             className="text-white bg-neutral-900 font-bold rounded-full py-2 px-6 "
           >
             Projects
-          </motion.button>
-          <motion.button
+          </motion.a>
+          <motion.a
+            href="/resume.pdf"
             whileTap={{ scale: 0.95 }}
             whileHover={{ backgroundColor: "rgba(0,0,0,0.03)" }}
             className="rounded-full font-bold py-2 px-6 "
           >
             Resume
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </AnimatePresence>

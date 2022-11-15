@@ -38,13 +38,13 @@ export default function ProjectsSection() {
         viewport={{ once: true }}
       >
         <motion.div className="xl:mt-12" variants={item}>
-          <ProjectCard {...PROJECTS[5]} />
+          <ProjectCard {...PROJECTS[3]} />
         </motion.div>
         <motion.div variants={item}>
           <ProjectCard {...PROJECTS[1]} />
         </motion.div>
         <motion.div className="xl:mt-12" variants={item}>
-          <ProjectCard {...PROJECTS[6]} />
+          <ProjectCard {...PROJECTS[2]} />
         </motion.div>
       </motion.div>
 

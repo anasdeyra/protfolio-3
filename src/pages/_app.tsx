@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         {/* OG TAGS */}
         <meta property="og:url" content="https://anasdeyra.vercel.app/" />
         <meta property="og:image" content="/banner.png" />
-        <meta property="og:website" content="article" />
+        <meta property="og:website" content="website" />
         <meta
           name="og:description"
           content="A Web developer specializing in building (and occasionally designing)

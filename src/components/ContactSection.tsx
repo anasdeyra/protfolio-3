@@ -81,7 +81,7 @@ function Socials() {
   return (
     <div className="flex flex-row justify-center">
       {SOCIALS.map(({ Icon, link }) => (
-        <a href={link} className=" p-4" target="_blank">
+        <a key={link} href={link} className=" p-4" target="_blank">
           <Icon size={24} />
         </a>
       ))}
