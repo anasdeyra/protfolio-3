@@ -31,7 +31,7 @@ export default function ProjectsSection() {
         Featured Projects
       </motion.h2>
       <motion.div
-        className="flex max-xl:flex-col  max-xl:items-center gap-16 mt-16 md:mt-24"
+        className="flex max-xl:flex-col justify-center  max-xl:items-center gap-16 mt-16 md:mt-24"
         variants={container}
         initial="hidden"
         whileInView="show"
