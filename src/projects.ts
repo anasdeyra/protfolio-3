@@ -153,5 +153,5 @@ export interface ProjectType {
   images: string[];
   isBig: boolean;
   demoUrl: string | null;
-  repoUrl: string;
+  repoUrl: string | null;
 }

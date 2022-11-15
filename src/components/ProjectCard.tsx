@@ -39,7 +39,7 @@ export default function ProjectCard({
         </a>
         <p className="mb-6 font-medium text-gray-700 ">{description}</p>
         <div className="flex justify-between">
-          <Link passHref href={demoUrl ?? "#"}>
+          <Link passHref href={demoUrl ?? "/#"}>
             <motion.a
               rel="noreferrer"
               target={"_blank"}
@@ -49,7 +49,7 @@ export default function ProjectCard({
               <HiExternalLink className="ml-2" />
             </motion.a>
           </Link>
-          <Link passHref href={repoUrl}>
+          <Link passHref href={repoUrl ?? "/#"}>
             <motion.a
               rel="noreferrer"
               target={"_blank"}
