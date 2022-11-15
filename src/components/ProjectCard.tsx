@@ -41,6 +41,7 @@ export default function ProjectCard({
         <div className="flex justify-between">
           <Link passHref href={demoUrl ?? "#"}>
             <motion.a
+              rel="noreferrer"
               target={"_blank"}
               className="inline-flex items-center py-2 px-3 text-sm font-bold text-center text-neutral-700 bg-neutral-200 hover:bg-neutral-100 rounded-full  "
             >
@@ -50,6 +51,7 @@ export default function ProjectCard({
           </Link>
           <Link passHref href={repoUrl}>
             <motion.a
+              rel="noreferrer"
               target={"_blank"}
               className="inline-flex items-center py-2 px-3 text-sm font-bold text-center text-neutral-700 bg-neutral-200 hover:bg-neutral-100 rounded-full  "
             >

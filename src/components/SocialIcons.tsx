@@ -30,6 +30,7 @@ function SocialLink({ link = "#", Icon }: { link: string; Icon: IconType }) {
   return (
     <Link passHref href={link}>
       <motion.a
+        rel="noreferrer"
         whileTap={{ scale: 0.9 }}
         whileHover={{ scale: 1.2 }}
         target="_blank"
