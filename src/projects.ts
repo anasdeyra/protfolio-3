@@ -34,7 +34,7 @@ const PROJECTS: ProjectType[] = [
     name: "ArtBeat",
     slug: "A web3 atrworks marketplace.",
     description:
-      "ArtBeat is curated art marketplace that aims to connect people who appriciate arts and the artists who are working with physical or digital medium",
+      "ArtBeat is a curated art marketplace that aims to connect people who appreciate arts and artists who are working with a physical or digital medium",
     images: [
       "/projects/artbeat.png",
       "/projects/artbeat2.png",
