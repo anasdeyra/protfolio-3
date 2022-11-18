@@ -20,7 +20,7 @@ export default function ProjectsSection() {
     show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
   return (
-    <div className="md:mt-48">
+    <div className="md:mt-16">
       <motion.h2
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
