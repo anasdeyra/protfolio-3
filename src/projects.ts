@@ -82,7 +82,7 @@ const PROJECTS: ProjectType[] = [
     slug: "an NFT marketplace",
     description:
       "Venix is a personal project I made to learn Next.js and Thirdweb",
-    images: ["/projects/venix.png"],
+    images: ["/projects/Venix.png"],
     demoUrl: "https://venix-nft.vercel.app/",
     repoUrl: "https://github.com/anasdeyra/Venix-NFT-marketplace",
     isBig: true,
@@ -125,7 +125,7 @@ const PROJECTS: ProjectType[] = [
     slug: "a chess game",
     description:
       "I made this chess game to sharpen my problem solving skill and develop a chess AI in the future.",
-    images: ["/projects/chess.png"],
+    images: ["/projects/Chess.png"],
     demoUrl: "https://chess-game-eight.vercel.app/",
     repoUrl: "https://github.com/anasdeyra/chess-game",
     isBig: false,
@@ -135,9 +135,9 @@ const PROJECTS: ProjectType[] = [
     slug: "an arabic words gessing game clone",
     description: "Wordle-ar is an arabic words gessing game clone",
     images: [
-      "/projects/wordle-ar.png",
-      "/projects/wordle-ar2.png",
-      "/projects/wordle-ar3.png",
+      "/projects/Wordle-ar.png",
+      "/projects/Wordle-ar2.png",
+      "/projects/Wordle-ar3.png",
     ],
     demoUrl: "https://wordle-ar.vercel.app/",
     repoUrl: "https://github.com/anasdeyra/wordle-ar",
