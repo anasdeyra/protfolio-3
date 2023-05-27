@@ -48,13 +48,13 @@ function ProjectCard({ isBig, images, name, slug }: ProjectType) {
   return (
     <motion.div
       variants={item}
-      className={`w-full cursor-pointer relative rounded-xl lg:shadow-xl shadow-md overflow-hidden ${
+      className={` w-full cursor-pointer relative rounded-xl lg:shadow-xl shadow-md overflow-hidden ${
         isBig && "col-span-2 row-span-2"
       }`}
     >
       <motion.a
         href={`/projects/${name}`}
-        className="absolute p-4 z-10 w-full h-full opacity-100 lg:opacity-0 lg:hover:opacity-100 bg-gradient-to-t from-[rgba(17,17,17,0.4)] to-transparent flex flex-col justify-end"
+        className="transition-all absolute p-4 z-10 w-full h-full opacity-100 lg:opacity-0 lg:hover:opacity-100 bg-gradient-to-t from-[rgba(17,17,17,0.4)] to-transparent flex flex-col justify-end"
       >
         <h2 className="font-bold text-xl md:text-3xl text-white">{name}</h2>
         <h3 className="font-bold text-sm md:text-md text-white ">{slug}</h3>

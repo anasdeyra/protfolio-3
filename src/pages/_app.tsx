@@ -42,7 +42,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="twitter:image" content="/banner.png" />
       </Head>
       <Navbar />
-      <Component {...pageProps} />
+      <div className="max-w-7xl mx-auto">
+        <Component {...pageProps} />
+      </div>
       <SocialIcons />
       <AnimatePresence>
         <motion.div
