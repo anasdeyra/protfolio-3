@@ -27,8 +27,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
 
         {/* OG TAGS */}
+        <meta property="og:title" content="Anas Deyra: front-end developer" />
         <meta property="og:url" content="https://anasdeyra.vercel.app/" />
-        <meta property="og:image" content="/banner.png" />
+        <meta property="og:image" content="/banner.jpg" />
         <meta property="og:website" content="website" />
         <meta
           name="og:description"
@@ -47,7 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           a part time freelancer."
         />
         <meta name="twitter:title" content="Anas Deyra: front-end developer" />
-        <meta name="twitter:image" content="/banner.png" />
+        <meta name="twitter:image" content="/banner.jpg" />
       </Head>
       <ApolloProvider client={client}>
         <SocialsProvider>
