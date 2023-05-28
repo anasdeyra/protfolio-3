@@ -7,6 +7,7 @@ import ScrollUp from "../components/ScrollUp";
 import Head from "next/head";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { SocialsProvider } from "../context/socials";
+import { Analytics } from "@vercel/analytics/react";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -74,6 +75,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <ScrollUp />
         </SocialsProvider>
       </ApolloProvider>
+      <Analytics />
     </>
   );
 }
