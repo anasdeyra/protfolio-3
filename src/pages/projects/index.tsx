@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PROJECTS, { ProjectType } from "../../projects";
+import { useQuery, gql } from "@apollo/client";
 const container = {
   hidden: { opacity: 0 },
   show: {

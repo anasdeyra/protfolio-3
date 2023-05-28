@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { SOCIALS } from "./SocialIcons";
+import { useSocials } from "../context/socials";
 
 export default function ContactSection() {
   return (
@@ -78,9 +78,10 @@ export default function ContactSection() {
 }
 
 function Socials() {
+  const socials = useSocials();
   return (
     <div className="flex flex-row justify-center">
-      {SOCIALS.map(({ Icon, link }) => (
+      {socials.map(({ Icon, link }) => (
         <a
           key={link}
           href={link}

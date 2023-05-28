@@ -1,15 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import {
-  BsGithub,
-  BsFacebook,
-  BsInstagram,
-  BsLinkedin,
-  BsTwitter,
-} from "react-icons/bs";
-import { IconType } from "react-icons";
+import { SocialContextValue, useSocials } from "../context/socials";
 
 export default function SocialIcons() {
+  const socials = useSocials();
   return (
     <AnimatePresence>
       <motion.div
@@ -18,7 +12,7 @@ export default function SocialIcons() {
         animate={{ opacity: 1 }}
         className="flex flex-col fixed top-[50%] mt-[-120px] max-lg:left-2 max-xl:left-8 left-8 text-neutral-900 max-md:hidden"
       >
-        {SOCIALS.map((props, i) => (
+        {socials.map((props, i) => (
           <SocialLink key={i} {...props} />
         ))}
       </motion.div>
@@ -26,7 +20,7 @@ export default function SocialIcons() {
   );
 }
 
-function SocialLink({ link = "#", Icon }: { link: string; Icon: IconType }) {
+function SocialLink({ link = "#", Icon }: SocialContextValue) {
   return (
     <Link passHref href={link}>
       <motion.a
@@ -41,14 +35,3 @@ function SocialLink({ link = "#", Icon }: { link: string; Icon: IconType }) {
     </Link>
   );
 }
-
-export const SOCIALS = [
-  {
-    Icon: BsLinkedin,
-    link: "https://www.linkedin.com/in/anas-deyra-7015b9240/",
-  },
-  { Icon: BsGithub, link: "https://github.com/anasdeyra" },
-  { Icon: BsFacebook, link: "https://www.facebook.com/anassdeyra/" },
-  { Icon: BsInstagram, link: "https://www.instagram.com/anas_deyra/" },
-  { Icon: BsTwitter, link: "https://twitter.com/anasdeyra" },
-];

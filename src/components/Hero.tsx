@@ -8,7 +8,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           initial={{ translateY: -60, opacity: 0 }}
           animate={{ translateY: 0, opacity: 1 }}
-          className="text-8xl font-black mt-32 max-md:text-6xl max-md:mt-24"
+          className="text-8xl font-black mt-44 max-md:text-6xl max-md:mt-24"
         >
           Hi I’m Anas Deyra
         </motion.h1>
