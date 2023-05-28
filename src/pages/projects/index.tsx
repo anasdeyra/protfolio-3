@@ -18,7 +18,7 @@ const item = {
   show: { opacity: 1 },
 };
 
-export default function projects() {
+export default function Projects() {
   const { data } = useQuery<{ projects: ProjectType[] }>(gql`
     query Projects {
       projects(orderBy: rank_ASC) {
@@ -66,11 +66,12 @@ export default function projects() {
       <motion.div className="grid-cols-3 space-y-4  lg:space-y-0 lg:grid lg:gap-3 lg:grid-rows-3">
         {projects.map((props, i) => (
           <div
+            key={i}
             className={`grid ${
               (i + 1) % 2 === 0 ? "row-span-2 col-span-2" : ""
             }`}
           >
-            <ProjectCard key={i} {...props} />
+            <ProjectCard {...props} />
           </div>
         ))}
       </motion.div>
