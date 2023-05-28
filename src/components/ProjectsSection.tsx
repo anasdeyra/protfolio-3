@@ -1,9 +1,32 @@
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import PROJECTS from "../projects";
 import ProjectCard from "./ProjectCard";
+import { gql, useQuery } from "@apollo/client";
+import { ProjectType } from "../pages/projects";
 
 export default function ProjectsSection() {
+  const { data } = useQuery<{
+    featuredProjects: FeaturedProject[];
+  }>(gql`
+    query MyQuery {
+      featuredProjects {
+        title
+        project {
+          demoLink
+          description
+          id
+          image {
+            url
+          }
+          slug
+          tags
+          name
+          githubLink
+        }
+      }
+    }
+  `);
+
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -19,6 +42,19 @@ export default function ProjectsSection() {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
+
+  if (!data) return null;
+
+  const LeftProject = data.featuredProjects.find(
+    ({ title }) => title === "left"
+  );
+  const middleProject = data.featuredProjects.find(
+    ({ title }) => title === "middle"
+  );
+  const rightProject = data.featuredProjects.find(
+    ({ title }) => title === "right"
+  );
+
   return (
     <div className="md:mt-16">
       <motion.h2
@@ -37,15 +73,21 @@ export default function ProjectsSection() {
         whileInView="show"
         viewport={{ once: true }}
       >
-        <motion.div className="xl:mt-12" variants={item}>
-          <ProjectCard {...PROJECTS[3]} />
-        </motion.div>
-        <motion.div variants={item}>
-          <ProjectCard {...PROJECTS[1]} />
-        </motion.div>
-        <motion.div className="xl:mt-12" variants={item}>
-          <ProjectCard {...PROJECTS[2]} />
-        </motion.div>
+        {LeftProject?.project && (
+          <motion.div className="xl:mt-12" variants={item}>
+            <ProjectCard {...LeftProject.project} />
+          </motion.div>
+        )}
+        {middleProject?.project && (
+          <motion.div variants={item}>
+            <ProjectCard {...middleProject.project} />
+          </motion.div>
+        )}{" "}
+        {rightProject?.project && (
+          <motion.div className="xl:mt-12" variants={item}>
+            <ProjectCard {...rightProject.project} />
+          </motion.div>
+        )}
       </motion.div>
 
       <div className="mt-24">
@@ -64,4 +106,9 @@ export default function ProjectsSection() {
       </div>
     </div>
   );
+}
+
+interface FeaturedProject {
+  title: string;
+  project: ProjectType;
 }

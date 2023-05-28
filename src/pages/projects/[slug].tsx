@@ -1,10 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import Carousel from "../../components/Carousel";
-import PROJECTS, { ProjectType } from "../../projects";
+import { ProjectType } from "./index";
 import { motion } from "framer-motion";
 import { BsGithub } from "react-icons/bs";
 import { HiExternalLink } from "react-icons/hi";
+import { client } from "../_app";
+import { gql } from "@apollo/client";
 
 export default function Project({ project }: { project: ProjectType }) {
   return (
@@ -12,14 +14,14 @@ export default function Project({ project }: { project: ProjectType }) {
       <Head>
         <title>Anas Deyra: Projects - {project.name}</title>
         <meta name="description" content={project.description} />
-        <meta property="og:image" content={project.images[0]} />
+        <meta property="og:image" content={project.image[0].url} />
         <meta name={project.description} />
         <meta name="twitter:description" content={project.description} />
         <meta
           name="twitter:title"
           content={`Anas Deyra: Projects - ${project.name}`}
         />
-        <meta name="twitter:image" content={project.images[0]} />
+        <meta name="twitter:image" content={project.image[0].url} />
       </Head>
       <div className="container mb-32 lg:mb-52 max-w-full mt-32 max-md:px-4 max-lg:px-16 px-40 max-xl:px-24">
         <h1 className=" text-3xl md:text-5xl font-bold text-center">
@@ -31,7 +33,7 @@ export default function Project({ project }: { project: ProjectType }) {
         <div className="mt-6 mb-12 flex flex-row gap-4 justify-center">
           {" "}
           <motion.a
-            href={project.demoUrl ?? "/#"}
+            href={project.demoLink ?? "/#"}
             rel="noreferrer"
             target={"_blank"}
             whileTap={{ scale: 0.95 }}
@@ -41,7 +43,7 @@ export default function Project({ project }: { project: ProjectType }) {
             Try demo <HiExternalLink className="ml-2" />
           </motion.a>{" "}
           <motion.a
-            href={project.repoUrl ?? "/#"}
+            href={project.githubLink ?? "/#"}
             rel="noreferrer"
             target={"_blank"}
             whileTap={{ scale: 0.95 }}
@@ -51,7 +53,7 @@ export default function Project({ project }: { project: ProjectType }) {
             Source <BsGithub className="ml-2" />
           </motion.a>
         </div>
-        <Carousel images={project.images} />
+        <Carousel images={project.image} />
         <h3 className="mt-8 mb-12 text-md md:text-xl font-medium text-start ">
           {project.description}
         </h3>
@@ -60,18 +62,47 @@ export default function Project({ project }: { project: ProjectType }) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = () => {
-  const names = PROJECTS.map(({ name }) => ({ params: { name } }));
-  return { paths: names, fallback: "blocking" };
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { data } = await client.query<{ projects: { slug: string }[] }>({
+    query: gql`
+      query Projects {
+        projects {
+          slug
+        }
+      }
+    `,
+  });
+  const slugs = data.projects.map(({ slug }) => ({ params: { slug } }));
+  return { paths: slugs, fallback: "blocking" };
 };
 
 export const getStaticProps: GetStaticProps<
   { project: ProjectType },
-  { name: string },
+  { slug: string },
   any
-> = ({ params }) => {
-  const project = PROJECTS.find((p) => p.name === params?.name);
+> = async ({ params }) => {
+  if (!params || !params.slug) return { notFound: true };
+  const {
+    data: { project },
+  } = await client.query<{ project: ProjectType }>({
+    query: gql`
+      query MyQuery($slug: String!) {
+        project(where: { slug: $slug }) {
+          demoLink
+          description
+          githubLink
+          id
+          name
+          image {
+            url
+          }
+          tags
+          slug
+        }
+      }
+    `,
+    variables: { slug: params.slug },
+  });
 
-  if (project) return { props: { project } };
-  return { notFound: true };
+  return { props: { project } };
 };

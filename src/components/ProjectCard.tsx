@@ -2,19 +2,19 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { BsGithub } from "react-icons/bs";
 import { HiExternalLink } from "react-icons/hi";
-import { ProjectType } from "../projects";
+import { ProjectType } from "../pages/projects";
 
 export default function ProjectCard({
   name,
   slug,
-  images,
-  demoUrl,
-  repoUrl,
+  image,
+  demoLink,
+  githubLink,
   description,
 }: ProjectType) {
   return (
     <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md  ">
-      <a href={`/projects/${name}`}>
+      <a href={`/projects/${slug}`}>
         <motion.img
           initial={{
             scale: 1,
@@ -27,7 +27,7 @@ export default function ProjectCard({
             borderBottomRightRadius: 8,
           }}
           className="rounded-t-lg"
-          src={images[0]}
+          src={image[0].url}
           alt={slug}
         />
       </a>
@@ -39,7 +39,7 @@ export default function ProjectCard({
         </a>
         <p className="mb-6 font-medium text-gray-700 ">{description}</p>
         <div className="flex justify-between">
-          <Link passHref href={demoUrl ?? "/#"}>
+          <Link passHref href={demoLink ?? "/#"}>
             <motion.a
               rel="noreferrer"
               target={"_blank"}
@@ -49,7 +49,7 @@ export default function ProjectCard({
               <HiExternalLink className="ml-2" />
             </motion.a>
           </Link>
-          <Link passHref href={repoUrl ?? "/#"}>
+          <Link passHref href={githubLink ?? "/#"}>
             <motion.a
               rel="noreferrer"
               target={"_blank"}

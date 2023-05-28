@@ -9,7 +9,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { SocialsProvider } from "../context/socials";
 import { Analytics } from "@vercel/analytics/react";
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   cache: new InMemoryCache(),
   uri: "https://eu-central-1-shared-euc1-02.cdn.hygraph.com/content/clfs8yutb1p2v01ui99dv6t12/master",
 });

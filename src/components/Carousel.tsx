@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function Carousel({ images }: { images: string[] }) {
+export default function Carousel({ images }: { images: { url: string }[] }) {
   const [active, setActive] = useState(0);
   return (
     <div id="default-carousel" className="relative" data-carousel="static">
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
         <div className="  duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0 z-20">
           <motion.img
-            src={images[active]}
+            src={images[active].url}
             className="max-w-[786px] object-scale-down absolute block  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
             alt="project"
           />
