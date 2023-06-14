@@ -65,7 +65,7 @@ function ProjectCard(props: ProjectType) {
   return (
     <motion.div
       variants={item}
-      className={`w-full cursor-pointer relative rounded-xl lg:shadow-xl shadow-md overflow-hidden`}
+      className={`w-full h-full cursor-pointer relative rounded-xl lg:shadow-xl shadow-md overflow-hidden`}
     >
       <motion.div className="transition-all absolute p-4 z-10 w-full h-full opacity-100 lg:opacity-0 lg:hover:opacity-100 bg-[rgba(17,17,17,0.6)] flex flex-col justify-center items-center">
         <h2 className="font-bold text-xl md:text-3xl text-white">
