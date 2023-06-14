@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { useQuery, gql } from "@apollo/client";
 import { useEffect, useState } from "react";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { client } from "../_app";
+import ProjectModal from "../../components/ProjectModal";
 
 const container = {
   hidden: { opacity: 0 },
@@ -18,32 +21,9 @@ const item = {
   show: { opacity: 1 },
 };
 
-export default function Projects() {
-  const { data } = useQuery<{ projects: ProjectType[] }>(gql`
-    query Projects {
-      projects(orderBy: rank_ASC) {
-        demoLink
-        description
-        githubLink
-        id
-        name
-        slug
-        tags
-        image {
-          url
-        }
-      }
-    }
-  `);
-
-  const [projects, setProjects] = useState<ProjectType[]>([]);
-
-  useEffect(() => {
-    if (!data) return;
-    setProjects(data.projects);
-  }, [data]);
-
-  if (projects.length === 0) return null;
+export default function Projects({
+  projects,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <motion.div
       whileInView="show"
@@ -71,7 +51,9 @@ export default function Projects() {
               (i + 1) % 2 === 0 ? "row-span-2 col-span-2" : ""
             }`}
           >
-            <ProjectCard {...props} />
+            <ProjectModal {...props}>
+              <ProjectCard {...props} />
+            </ProjectModal>
           </div>
         ))}
       </motion.div>
@@ -79,27 +61,50 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ image, name, slug }: ProjectType) {
+function ProjectCard(props: ProjectType) {
   return (
     <motion.div
       variants={item}
       className={`w-full cursor-pointer relative rounded-xl lg:shadow-xl shadow-md overflow-hidden`}
     >
-      <motion.a
-        href={`/projects/${slug}`}
-        className="transition-all absolute p-4 z-10 w-full h-full opacity-100 lg:opacity-0 lg:hover:opacity-100 bg-gradient-to-t from-[rgba(17,17,17,0.4)] to-transparent flex flex-col justify-end"
-      >
-        <h2 className="font-bold text-xl md:text-3xl text-white">{name}</h2>
-        <h3 className="font-bold text-sm md:text-md text-white ">{slug}</h3>
-      </motion.a>
+      <motion.div className="transition-all absolute p-4 z-10 w-full h-full opacity-100 lg:opacity-0 lg:hover:opacity-100 bg-[rgba(17,17,17,0.6)] flex flex-col justify-center items-center">
+        <h2 className="font-bold text-xl md:text-3xl text-white">
+          {props.name}
+        </h2>
+      </motion.div>
+
       <img
-        src={image[0].url}
-        alt={name}
+        src={props.image[0].url}
+        alt={props.name}
         className="object-cover object-center max-lg:aspect-[16/10] w-full h-full"
       />
     </motion.div>
   );
 }
+
+export const getStaticProps: GetStaticProps<{
+  projects: ProjectType[];
+}> = async () => {
+  const { data } = await client.query<{ projects: ProjectType[] }>({
+    query: gql`
+      query Projects {
+        projects(orderBy: rank_ASC) {
+          demoLink
+          description
+          githubLink
+          id
+          name
+          slug
+          tags
+          image {
+            url
+          }
+        }
+      }
+    `,
+  });
+  return { props: data };
+};
 
 export interface ProjectType {
   demoLink: string;

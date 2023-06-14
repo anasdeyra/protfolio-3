@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import InfoSegments from "./InfoSegments";
+import { AboutReturn } from "../pages";
 
-export default function AboutSection() {
+export default function AboutSection(props: AboutReturn) {
   return (
     <div id="about">
       <motion.h2
@@ -17,17 +18,22 @@ export default function AboutSection() {
       >
         About
       </motion.h2>
-      <motion.div className="mt-16 md:mt-24 gap-6 flex flex-col lg:flex-row items-center lg:items-start">
-        <motion.img
-          initial={{ opacity: 0, y: 50 }}
+      <motion.div className="mt-16 md:mt-24 gap-6 flex flex-col lg:flex-row items-center lg:items-start mx-auto w-fit">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="aspect-square max-w-xs md:max-w-[400px] md:w-[400px]"
-          src="/photo2.png"
-        />
+          transition={{ duration: 1.3 }}
+        >
+          <motion.img
+            animate={{ y: [0, -40, 0] }} // Target states for infinite bounce animation
+            transition={{ yoyo: Infinity, duration: 4.4, delay: 1.3 }} // Transition options for infinite bounce animation
+            className="aspect-square max-w-xs md:max-w-[400px] md:w-[400px]"
+            src="/photo2.png"
+          />
+        </motion.div>
 
-        <InfoSegments />
+        <InfoSegments {...props} />
       </motion.div>
     </div>
   );

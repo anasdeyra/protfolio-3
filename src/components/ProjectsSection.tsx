@@ -98,7 +98,7 @@ export default function ProjectsSection() {
             viewport={{ once: true }}
             whileTap={{ scale: 0.95 }}
             whileHover={{ backgroundColor: "#262626" }}
-            className="text-white  shadow-xl  bg-neutral-900 font-bold rounded-full py-2 px-6"
+            className="text-white shadow-xl block mx-auto h-max w-max bg-neutral-900 font-semibold rounded-full py-2 px-6"
           >
             See all
           </motion.a>

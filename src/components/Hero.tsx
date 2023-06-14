@@ -1,6 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
+import { HeroReturn } from "../pages";
 
-export default function Hero() {
+export default function Hero({
+  heroSection: { heading, subHeading },
+}: HeroReturn) {
   return (
     <AnimatePresence>
       <div>
@@ -10,7 +13,7 @@ export default function Hero() {
           animate={{ translateY: 0, opacity: 1 }}
           className="text-8xl font-black mt-44 max-md:text-6xl max-md:mt-24"
         >
-          Hi I’m Anas Deyra
+          {heading}
         </motion.h1>
         <motion.h2
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -18,9 +21,7 @@ export default function Hero() {
           animate={{ translateY: 0, opacity: 1 }}
           className="text-2xl font-bold mt-10 max-md:text-xl"
         >
-          A Web developer specializing in building (and occasionally designing)
-          exceptional digital experiences mostly using Next js. Currently, I am
-          a part time freelancer.
+          {subHeading}
         </motion.h2>
         <motion.div
           transition={{ duration: 0.8, delay: 1.3 }}

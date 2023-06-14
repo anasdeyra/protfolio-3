@@ -53,8 +53,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ApolloProvider client={client}>
         <SocialsProvider>
           <Navbar />
-          <div className="max-w-[1920] mx-auto">
+          <div className="max-w-[1440px] mx-auto">
             <Component {...pageProps} />
+            <span className="text-xs md:text-sm text-neutral-700 mt-32 mb-16 mx-auto text-center block">
+              © 2023 Anas Deyra. All rights reserved.
+            </span>
           </div>
           <SocialIcons />
           <AnimatePresence>

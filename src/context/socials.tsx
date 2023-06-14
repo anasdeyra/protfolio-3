@@ -1,25 +1,33 @@
 import React, { useContext, useEffect, useState } from "react";
 import { IconType } from "react-icons";
 import {
-  BsFacebook,
-  BsGithub,
-  BsInstagram,
-  BsLinkedin,
-  BsTwitter,
-} from "react-icons/bs";
+  SiFacebook,
+  SiGithub,
+  SiInstagram,
+  SiLinkedin,
+  SiTwitter,
+  SiUpwork,
+} from "react-icons/si";
 import { createContext } from "react";
 import { gql, useQuery } from "@apollo/client";
 
-export const socialsContext = createContext<SocialContextValue[]>([
+const DEFAULT_VALUE = [
   {
-    Icon: BsLinkedin,
+    Icon: SiLinkedin,
     link: "https://www.linkedin.com/in/anas-deyra-7015b9240/",
   },
-  { Icon: BsGithub, link: "https://github.com/anasdeyra" },
-  { Icon: BsFacebook, link: "https://www.facebook.com/anassdeyra/" },
-  { Icon: BsInstagram, link: "https://www.instagram.com/anas_deyra/" },
-  { Icon: BsTwitter, link: "https://twitter.com/anasdeyra" },
-]);
+  { Icon: SiGithub, link: "https://github.com/anasdeyra" },
+  { Icon: SiFacebook, link: "https://www.facebook.com/anassdeyra/" },
+  { Icon: SiInstagram, link: "https://www.instagram.com/anas_deyra/" },
+  { Icon: SiTwitter, link: "https://twitter.com/anasdeyra" },
+  {
+    Icon: SiUpwork,
+    link: "https://www.upwork.com/freelancers/~0141d0cac0eb05dc40",
+  },
+];
+
+export const socialsContext =
+  createContext<SocialContextValue[]>(DEFAULT_VALUE);
 
 export const SocialsProvider = ({
   children,
@@ -34,23 +42,27 @@ export const SocialsProvider = ({
         instagramUrl
         linkedInUrl
         twitterUrl
+        upworkUrl
       }
     }
   `);
 
-  const [socials, setSocials] = useState<SocialContextValue[]>([]);
+  console.log(data);
+
+  const [socials, setSocials] = useState<SocialContextValue[]>(DEFAULT_VALUE);
 
   useEffect(() => {
     if (!data) return;
     setSocials([
       {
-        Icon: BsLinkedin,
+        Icon: SiLinkedin,
         link: data.social.linkedInUrl,
       },
-      { Icon: BsGithub, link: data.social.githubUrl },
-      { Icon: BsFacebook, link: data.social.facebookUrl },
-      { Icon: BsInstagram, link: data.social.instagramUrl },
-      { Icon: BsTwitter, link: data.social.twitterUrl },
+      { Icon: SiGithub, link: data.social.githubUrl },
+      { Icon: SiFacebook, link: data.social.facebookUrl },
+      { Icon: SiInstagram, link: data.social.instagramUrl },
+      { Icon: SiTwitter, link: data.social.twitterUrl },
+      { Icon: SiUpwork, link: data.social.upworkUrl },
     ]);
   }, [data]);
 
@@ -78,5 +90,6 @@ interface SocialsResponse {
     twitterUrl: string;
     linkedInUrl: string;
     githubUrl: string;
+    upworkUrl: string;
   };
 }

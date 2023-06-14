@@ -1,15 +1,39 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
+import { AboutReturn } from "../pages/index";
 
-export default function InfoSegments() {
+export default function InfoSegments({
+  aboutSection: { about, education, experience, work },
+}: AboutReturn) {
   const [active, setActive] = useState("About");
+
+  const SEGEMENTS: { title: string; children: React.ReactNode }[] = [
+    {
+      title: "About",
+      children: (
+        <p className="md:text-xl text-lg font-medium text-left max-w-2xl">
+          {about}
+        </p>
+      ),
+    },
+    {
+      title: "Education",
+      children: <EventsList events={education} />,
+    },
+    {
+      title: "Work",
+      children: <EventsList events={work} />,
+    },
+    { title: "Experience", children: <EventsList events={experience} /> },
+  ];
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 1, ease: "easeIn", delay: 0.3 }}
-      className={"w-full text-[#111]"}
+      className={"w-fit text-[#111]"}
     >
       <div>
         <motion.nav
@@ -18,7 +42,7 @@ export default function InfoSegments() {
         >
           {SEGEMENTS.map(({ title }) => (
             <motion.div key={title} className="flex flex-col">
-              <motion.div
+              <motion.h3
                 initial={{ color: "#aaa" }}
                 animate={{ color: title === active ? "#111" : undefined }}
                 className={`cursor-pointer `}
@@ -27,7 +51,7 @@ export default function InfoSegments() {
                 }}
               >
                 {title}
-              </motion.div>
+              </motion.h3>
               {title === active && (
                 <motion.span
                   initial={{ scaleX: 0, backgroundColor: "#aaa" }}
@@ -65,71 +89,16 @@ export default function InfoSegments() {
   );
 }
 
-const EDUCATION: Event[] = [
-  {
-    title: "Bac Degree in computer science",
-    slug: "Bardo high school - 2021",
-    body: "Graduated in july 2021 at Bardo high school with 80% score.",
-  },
-];
-const WORK: Event[] = [
-  {
-    title: "CTO at Coiner Impact",
-    slug: "September 2022 - Present",
-    body: "Coiner Impact is a magazine specializing in crypto, blockchain, web3, and cyber security.",
-  },
-  {
-    title: "Web Developer at Engineering SPARK club",
-    slug: "April 2022 - September 2022",
-    body: "Engineering SPARK is a cybersecurity club that hosts CTF events, cybersecurity, web development and ai workshops, etc...    ",
-  },
-];
-
-const EXPERIENCE: Event[] = [
-  {
-    title: "1st place at IEEE hackathon",
-    slug: "Faculty of Sciences of Tunis - 2022",
-    body: "The goal of this hackathon was to build a real estate renting management solution in 24 hours. I worked on the front-end part where I managed to create multiple pages and a dashboard with a modern and user-friendly UI using Chakra-UI.",
-  },
-  {
-    title: "2nd place at INFO+ hackathon",
-    slug: "Faculty of Sciences of Tunis - 2022",
-    body: "The goal of this hackathon was to build a web-developers freelancing platform where its easy for clients and freelancers to find the right match on the local scale. I was responssible for the front-end part where I created multiple pages and implemented a real-time chat feature using socket.io.",
-  },
-];
-
-const SEGEMENTS: { title: string; children: React.ReactNode }[] = [
-  {
-    title: "About",
-    children: (
-      <h3 className="md:text-xl text-lg font-medium text-left">
-        Anas Ben Deyra, {_calculateAge()} years old computer science student
-        born and based in Tunisia, Have been developing web apps with react for
-        2 years. And I also love cycling and making bad music.
-      </h3>
-    ),
-  },
-  {
-    title: "Education",
-    children: <EventsList events={EDUCATION} />,
-  },
-  {
-    title: "Work",
-    children: <EventsList events={WORK} />,
-  },
-  { title: "Experience", children: <EventsList events={EXPERIENCE} /> },
-];
-
 function EventsList({ events }: Props) {
   return (
     <div className="flex flex-col gap-10 text-left">
-      {events.map(({ body, slug, title }) => (
+      {events.map(({ event: { body, timeStamp, title } }) => (
         <div key={title} className="flex flex-col items-start ">
           <h3 className="md:text-xl text-lg font-extrabold ">{title}</h3>
-          <h4 className="md:text-md text- font-medium text-neutral-500  mt-3 md:mt-4">
-            {slug}
-          </h4>
-          <h4 className="md:text-lg text-md font-medium  ">{body}</h4>
+          <span className="md:text-md text- font-medium text-neutral-500  mt-3 md:mt-4">
+            {timeStamp}
+          </span>
+          <p className="md:text-lg text-md font-medium max-w-2xl">{body}</p>
         </div>
       ))}
     </div>
@@ -137,9 +106,11 @@ function EventsList({ events }: Props) {
 }
 
 interface Event {
-  title: string;
-  body: string;
-  slug: string;
+  event: {
+    timeStamp: string;
+    title: string;
+    body: string;
+  };
 }
 
 interface Props {
