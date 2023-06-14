@@ -47,8 +47,6 @@ export const SocialsProvider = ({
     }
   `);
 
-  console.log(data);
-
   const [socials, setSocials] = useState<SocialContextValue[]>(DEFAULT_VALUE);
 
   useEffect(() => {
