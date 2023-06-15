@@ -19,7 +19,6 @@ export default function ProjectsSection() {
             url
           }
           slug
-          tags
           name
           githubLink
         }
