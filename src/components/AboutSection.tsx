@@ -29,7 +29,8 @@ export default function AboutSection(props: AboutReturn) {
             animate={{ y: [0, -40, 0] }} // Target states for infinite bounce animation
             transition={{ yoyo: Infinity, duration: 4.4, delay: 1.3 }} // Transition options for infinite bounce animation
             className="aspect-square max-w-xs md:max-w-[400px] md:w-[400px]"
-            src="/photo2.png"
+            src="/anasdeyra.webp"
+            alt="Anas Deyra"
           />
         </motion.div>
 

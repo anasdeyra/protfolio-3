@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { SocialContextValue, useSocials } from "../context/socials";
+import { getWebsiteName } from "./ContactSection";
 
 export default function SocialIcons() {
   const socials = useSocials();
@@ -31,6 +32,7 @@ function SocialLink({ link = "#", Icon }: SocialContextValue) {
         className="p-3"
       >
         <Icon size={24} />
+        <span className="sr-only">{getWebsiteName(link) + " link"}</span>
       </motion.a>
     </Link>
   );

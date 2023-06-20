@@ -1,6 +1,22 @@
 import { motion } from "framer-motion";
 import { useSocials } from "../context/socials";
 
+export function getWebsiteName(link: string) {
+  const url = new URL(link);
+  let hostname = url.hostname;
+
+  // Remove "www." if present
+  hostname = hostname.replace(/^www\./i, "");
+
+  // Extract the main domain
+  const domainParts = hostname.split(".");
+  if (domainParts.length > 2) {
+    hostname = domainParts.slice(1).join(".");
+  }
+
+  return hostname;
+}
+
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -54,7 +70,7 @@ export default function ContactSection() {
       </motion.div>
       <div className="grid lg:grid-cols-2 mt-8 md:mt-16 overflow-visible">
         <div className="relative grid items-start justify-center max-lg:hidden overflow-visible">
-          {IMAGES.map(({ src, delay, ...styles }, i) => (
+          {IMAGES.map(({ src, delay, alt, ...styles }, i) => (
             <motion.img
               key={i}
               height={128}
@@ -69,6 +85,7 @@ export default function ContactSection() {
               }}
               className="absolute"
               src={src}
+              alt={alt}
             />
           ))}
           <motion.img
@@ -83,7 +100,8 @@ export default function ContactSection() {
               repeatType: "reverse",
               duration: 2,
             }}
-            src={"/illustrations/t.png"}
+            src={"/illustrations/middle.webp"}
+            alt="middle illustration"
           />
         </div>
         <form
@@ -179,6 +197,7 @@ function Socials() {
           rel="noreferrer"
           target="_blank"
         >
+          <span className="sr-only">{getWebsiteName(link) + " link"}</span>
           <Icon size={24} />
         </motion.a>
       ))}
@@ -188,30 +207,34 @@ function Socials() {
 
 const IMAGES = [
   {
-    src: "/illustrations/ill.png",
+    src: "/illustrations/top-left.webp",
     top: -60,
     left: -60,
     delay: 0,
     rotateZ: -25,
+    alt: "top-left illustration",
   },
   {
-    src: "/illustrations/ill (2).png",
+    src: "/illustrations/bottom-right.webp",
 
     bottom: -70,
     right: 40,
     delay: 0.6,
     rotateZ: 140,
+    alt: "bottom-right illustration",
   },
   {
-    src: "/illustrations/ill (2).webp",
+    src: "/illustrations/bottom-left.webp",
     bottom: 0,
     left: -100,
     delay: 0.2,
+    alt: "bottom-left illustration",
   },
   {
-    src: "/illustrations/ill (4).png",
+    src: "/illustrations/top-right.webp",
     top: -60,
     right: 0,
     delay: 0.8,
+    alt: "top-right illustration",
   },
 ];

@@ -39,7 +39,8 @@ export default function WorkBanner() {
           delay: 1,
         }}
         className="lg:absolute max-lg:mt-8 lg:left-[60%] lg:-top-1/3"
-        src="/handshake2.png"
+        src="/handshake.webp"
+        alt="handshake illustration"
       />
     </motion.div>
   );

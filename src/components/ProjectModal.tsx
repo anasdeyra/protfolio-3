@@ -6,6 +6,7 @@ import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
+import Image from "next/image";
 
 export default function ProjectModal({
   name,
@@ -49,7 +50,8 @@ export default function ProjectModal({
             }
           >
             {image.map(({ url }, i) => (
-              <img
+              <Image
+                layout="fill"
                 key={i}
                 src={url}
                 alt={name + " " + (i + 1)}

@@ -9,17 +9,19 @@ export default function ProjectCard(props: ProjectType) {
     <>
       <div className="max-w-sm rounded-xl    ">
         <ProjectModal {...props}>
-          <motion.img
-            initial={{
-              scale: 1,
-            }}
-            whileHover={{
-              scale: 1.2,
-            }}
-            className="rounded-lg shadow-xl"
-            src={props.image[0].url}
-            alt={props.name}
-          />
+          <motion.div>
+            <motion.img
+              initial={{
+                scale: 1,
+              }}
+              whileHover={{
+                scale: 1.2,
+              }}
+              className="rounded-lg shadow-xl"
+              src={props.image[0].url}
+              alt={props.name}
+            />
+          </motion.div>
         </ProjectModal>
 
         <Link passHref href={props.demoLink ?? "/#"}>

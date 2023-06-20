@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { useQuery, gql } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { gql } from "@apollo/client";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { client } from "../_app";
 import ProjectModal from "../../components/ProjectModal";
+import Image from "next/image";
 
 const container = {
   hidden: { opacity: 0 },
@@ -73,7 +73,8 @@ function ProjectCard(props: ProjectType) {
         </h2>
       </motion.div>
 
-      <img
+      <Image
+        layout="fill"
         src={props.image[0].url}
         alt={props.name}
         className="object-cover object-center max-lg:aspect-[16/10] w-full h-full"
