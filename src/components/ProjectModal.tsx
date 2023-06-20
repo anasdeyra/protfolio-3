@@ -50,8 +50,7 @@ export default function ProjectModal({
             }
           >
             {image.map(({ url }, i) => (
-              <Image
-                layout="fill"
+              <img
                 key={i}
                 src={url}
                 alt={name + " " + (i + 1)}
