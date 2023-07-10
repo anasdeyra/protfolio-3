@@ -13,7 +13,7 @@ export default function Navbar() {
           transition={{ duration: 0.5, delay: 0.3 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="max-w-[1920px] mx-auto flex flex-row items-center justify-between mt-6 max-md:px-4 max-lg:px-16 px-40 max-xl:px-24 text-neutral-900"
+          className="max-w-[1440px] mx-auto flex flex-row items-center justify-between mt-6 max-md:px-4 max-lg:px-16 px-40 max-xl:px-24 text-neutral-900"
         >
           <Link passHref href={"/"}>
             <motion.a
