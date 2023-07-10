@@ -6,7 +6,6 @@ import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
-import Image from "next/image";
 
 export default function ProjectModal({
   name,
@@ -23,7 +22,7 @@ export default function ProjectModal({
       <Dialog.Trigger>{children}</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="DialogOverlay" />
-        <Dialog.Content className="DialogContent">
+        <Dialog.Content className="DialogContent z-10">
           <Carousel
             showThumbs={false}
             showIndicators={false}
