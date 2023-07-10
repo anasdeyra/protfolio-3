@@ -27,7 +27,7 @@ export default function ScrollUp() {
           initial={{ bottom: -50 }}
           animate={{ bottom: 0 }}
           exit={{ bottom: -80 }}
-          className="m-4 fixed right-0 p-4 lg:m-8 bg-[#111]  text-white rounded-full shadow-2xl shadow-black"
+          className="m-4 fixed z-20 right-0 p-4 lg:m-8 bg-[#111]  text-white rounded-full shadow-2xl shadow-black"
         >
           <FiArrowUp size={24} />
         </motion.button>
