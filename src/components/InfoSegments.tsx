@@ -10,11 +10,7 @@ export default function InfoSegments({
   const SEGEMENTS: { title: string; children: React.ReactNode }[] = [
     {
       title: "About",
-      children: (
-        <p className="md:text-xl text-lg font-medium text-left max-w-2xl">
-          {about}
-        </p>
-      ),
+      children: about.split("\n\n").map((s)=><p className="md:text-xl text-lg font-medium text-left max-w-2xl">{s}</p>),
     },
     {
       title: "Education",
