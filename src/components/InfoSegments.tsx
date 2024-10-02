@@ -20,11 +20,7 @@ export default function InfoSegments({
       title: "Education",
       children: <EventsList events={education} />,
     },
-    {
-      title: "Work",
-      children: <EventsList events={work} />,
-    },
-    { title: "Experience", children: <EventsList events={experience} /> },
+    { title: "Experience", children: <EventsList events={work} /> },
   ];
 
   return (
